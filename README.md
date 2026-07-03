@@ -1,0 +1,1 @@
+# chatagorska.pl
