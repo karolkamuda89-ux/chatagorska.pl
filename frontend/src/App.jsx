@@ -54,7 +54,7 @@ const handleSubmit = async (e) => {
 
   try {
     // Wysyłamy paczkę kurierem (fetch) pod adres lokalnego Apache
-    const response = await fetch("http://localhost/chatagorska-backend/zapisz.php", {
+    const response = await fetch("https://chatagorska.pl/chatagorska-backend/zapisz.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
