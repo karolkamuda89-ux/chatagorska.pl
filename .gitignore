@@ -1,0 +1,17 @@
+# === PHP / Backend ===
+/backend/vendor/
+/backend/.env
+/backend/composer.lock
+*.log
+
+# === React / Frontend ===
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.env
+/frontend/.env.local
+
+# === Systemowe / Śmieci IDE ===
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
