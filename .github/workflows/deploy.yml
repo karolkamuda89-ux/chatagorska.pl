@@ -36,3 +36,4 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./frontend/dist/  # Wskazujemy precyzyjną ścieżkę do zbudowanego Reacta
         server-dir: domains/chatagorska.pl/public_html/
+        protocol: ftps
