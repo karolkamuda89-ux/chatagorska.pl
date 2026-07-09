@@ -1,5 +1,5 @@
 
-import BookingCalendar from './BookingCalendar' // Importujemy kalendarz z drugiego pliku
+import BookingCalendar from './bookingCalendar' // Importujemy kalendarz z drugiego pliku
 import React, { useState } from 'react'
 import opisySEO from './opisy.json' // upewnij się, że ścieżka do pliku jest poprawna
 
