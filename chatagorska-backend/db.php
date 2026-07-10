@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';
-$db   = 'chatagorska';
-$user = 'root';
-$pass = ''; // W XAMPP domyślne hasło dla root jest puste
+$db   = 'vprbdsoint_chatagorska';
+$user = 'vprbdsoint_karol';
+$pass = 'S2--GhAA+dB44cSv';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
@@ -14,9 +14,6 @@ $options = [
 
 try {
      $pdo = new PDO($dsn, $user, $pass, $options);
-     // Jeśli chcesz przetestować połączenie, odkomentuj linijkę niżej:
-     // echo "Połączenie z bazą danych zakończone sukcesem!";
 } catch (\PDOException $e) {
      throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
-?>

@@ -1,0 +1,49 @@
+<svg width="360" height="360" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#EFE7DA"/>
+      <stop offset="100%" stop-color="#F7F2E9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- outer ring -->
+  <circle cx="180" cy="180" r="168" fill="url(#skyGrad)" stroke="#2E3B2F" stroke-width="4"/>
+  <circle cx="180" cy="180" r="152" fill="none" stroke="#2E3B2F" stroke-width="1.5"/>
+
+  <!-- sun -->
+  <circle cx="180" cy="120" r="26" fill="#D98F4E"/>
+
+  <!-- back mountain -->
+  <path d="M 60 232 L 140 118 L 200 200 L 230 165 L 300 232 Z" fill="#7C8B72"/>
+
+  <!-- front mountains -->
+  <path d="M 45 236 L 128 128 L 168 178 L 195 145 L 260 236 Z" fill="#3F4E3A"/>
+  <path d="M 128 128 L 116 154 L 140 154 Z" fill="#F7F2E9"/>
+  <path d="M 195 145 L 185 165 L 205 165 Z" fill="#F7F2E9"/>
+
+  <!-- tree line -->
+  <g fill="#2E3B2F">
+    <path d="M 78 236 L 90 208 L 102 236 Z"/>
+    <path d="M 78 236 L 90 218 L 102 236 Z" fill="#3F4E3A"/>
+    <path d="M 250 236 L 262 210 L 274 236 Z"/>
+    <path d="M 250 236 L 262 220 L 274 236 Z" fill="#3F4E3A"/>
+  </g>
+
+  <!-- cabin -->
+  <g>
+    <rect x="150" y="236" width="60" height="38" fill="#5B4636"/>
+    <polygon points="142,236 180,206 218,236" fill="#2E3B2F"/>
+    <rect x="172" y="250" width="16" height="24" fill="#F7F2E9"/>
+    <rect x="158" y="244" width="10" height="10" fill="#F7F2E9"/>
+    <rect x="192" y="244" width="10" height="10" fill="#F7F2E9"/>
+  </g>
+
+  <!-- ground line -->
+  <line x1="60" y1="274" x2="300" y2="274" stroke="#2E3B2F" stroke-width="2"/>
+
+  <!-- text -->
+  <text x="180" y="308" font-family="Georgia, 'Times New Roman', serif" font-size="26" letter-spacing="3"
+        fill="#2E3B2F" text-anchor="middle" font-weight="bold">CHATA</text>
+  <text x="180" y="328" font-family="Georgia, 'Times New Roman', serif" font-size="13" letter-spacing="5"
+        fill="#5B4636" text-anchor="middle">GÓRSKA</text>
+</svg>

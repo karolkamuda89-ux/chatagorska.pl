@@ -1,8 +1,8 @@
 <?php
 // 1. Zezwalamy Reactowi (port 5173) na przesyłanie danych do Apache (port 80)
-header("Access-Control-Allow-Origin: http://localhost:5173");
-header("Access-Control-Allow-Headers: Content-Type");
-header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Origin: https://chatagorska.pl");
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Content-Type: application/json; charset=UTF-8");
 
 // Jeśli to tylko zapytanie testowe przeglądarki (Preflight), kończymy wcześniej

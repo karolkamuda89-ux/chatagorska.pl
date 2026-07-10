@@ -4,9 +4,11 @@ import React, { useState } from 'react'
 import opisySEO from './opisy.json' // upewnij się, że ścieżka do pliku jest poprawna
 
 // AUTOMATYCZNIE (Czysty JS, zajmuje 1 sekundę)
-const JEDNA_Z_35_FOTEK = Array.from({ length: 29 }, (_, i) => `/zdjecia/${i + 1}.jpg`);
+const JEDNA_Z_35_FOTEK = Array.from({ length: 29 }, (_, i) => `/zdjecia/${i + 1}.webp`);
 
 function App() {
+const [touchStartX, setTouchStartX] = useState(0);
+const [touchEndX, setTouchEndX] = useState(0);
 const [wybranyTermin, setWybranyTermin] = useState("");
 const [dataStart, setDataStart] = useState("");
 const [dataEnd, setDataEnd] = useState("");
@@ -83,24 +85,75 @@ const handleSubmit = async (e) => {
       
       {/* 1. DUŻY GÓRNY PASEK (NAVBAR) */}
       <nav className="sticky top-0 z-50 bg-neutral-950/80 backdrop-blur-md border-b border-neutral-900 px-6 py-4">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <span className="text-xl font-light tracking-widest text-white uppercase">Chata Górska</span>
-          <div className="hidden md:flex space-x-8 text-sm font-light tracking-wider text-neutral-300">
-            <a href="#o-nas" className="hover:text-amber-500 transition-colors">O nas</a>
-            <a href="#galeria" className="hover:text-amber-500 transition-colors">Galeria</a>
-            <a href="#rezerwacja" className="hover:text-amber-500 transition-colors">Rezerwacja</a>
-            <a href="#kontakt" className="hover:text-amber-500 transition-colors">Kontakt</a>
-          </div>
-          <a href="#rezerwacja" className="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-neutral-950 text-xs font-medium tracking-wider uppercase transition-all">
-            Zarezerwuj
-          </a>
-        </div>
-      </nav>
+  <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
+    
+    {/* LEWA STRONA: LOGO + DANE MOBILNE */}
+    <div className="flex flex-col items-center md:items-start gap-2 w-full md:w-auto">
+      {/* LOGO */}
+      <span className="text-xl font-light tracking-widest text-white uppercase">Chata Górska</span>
+      
+      {/* SZYBKI KONTAKT DLA TELEFONÓW (ukryty na komputerach md:hidden) */}
+      <div className="flex md:hidden items-center space-x-6 text-[11px] font-light tracking-wider text-neutral-400">
+        {/* TELEFON MOBILNY */}
+        <a href="tel:+48512294264" className="flex items-center gap-1.5 hover:text-amber-500 active:text-amber-400 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3.5 h-3.5 text-amber-500/70">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+          </svg>
+          <span>512 294 264</span>
+        </a>
+
+        {/* EMAIL MOBILNY */}
+        <a href="mailto:kontakt@chatagorska.pl" className="flex items-center gap-1.5 hover:text-amber-500 active:text-amber-400 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3.5 h-3.5 text-amber-500/70">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+          </svg>
+          <span>kontakt@chatagorska.pl</span>
+        </a>
+      </div>
+    </div>
+    
+    {/* ŚRODEK: LINKI NAWIGACJI (tylko komputery) */}
+    <div className="hidden md:flex space-x-8 text-sm font-light tracking-wider text-neutral-300">
+      <a href="#o-nas" className="hover:text-amber-500 transition-colors">O nas</a>
+      <a href="#galeria" className="hover:text-amber-500 transition-colors">Galeria</a>
+      <a href="#rezerwacja" className="hover:text-amber-500 transition-colors">Rezerwacja</a>
+      <a href="#kontakt" className="hover:text-amber-500 transition-colors">Kontakt</a>
+    </div>
+
+    {/* PRAWA STRONA: DANE DLA KOMPUTERÓW + PRZYCISK REZERWACJI */}
+    <div className="flex items-center space-x-6 justify-between md:justify-end w-full md:w-auto border-t border-neutral-900 md:border-t-0 pt-3 md:pt-0">
+      
+      {/* SEKCJA KONTAKTOWA DLA KOMPUTERÓW (widoczna od dużych ekranów lg) */}
+      <div className="hidden lg:flex items-center space-x-5 text-xs font-light tracking-wider text-neutral-400 border-r border-neutral-800 pr-5">
+        <a href="tel:+48512294264" className="flex items-center gap-2 hover:text-amber-500 transition-colors group">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-amber-500/70 group-hover:text-amber-500 transition-colors">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+          </svg>
+          <span>512 294 264</span>
+        </a>
+
+        <a href="mailto:kontakt@chatagorska.pl" className="flex items-center gap-2 hover:text-amber-500 transition-colors group">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-amber-500/70 group-hover:text-amber-500 transition-colors">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+          </svg>
+          <span>kontakt@chatagorska.pl</span>
+        </a>
+      </div>
+
+      {/* PRZYCISK ZAREZERWUJ (na telefonie rozciąga się lub dopasowuje elegancko) */}
+      <a href="#rezerwacja" className="w-full md:w-auto text-center px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-neutral-950 text-xs font-medium tracking-wider uppercase transition-all active:scale-95 shadow-lg shadow-amber-500/10 mx-auto md:mx-0">
+        Zarezerwuj
+      </a>
+
+    </div>
+
+  </div>
+</nav>
 
       {/* 2. WIELKIE ZDJĘCIE WIZERUNKOWE (HERO) */}
       <header className="relative h-[80vh] flex items-center justify-center overflow-hidden">
         <img 
-          src="/zdjecia/zdjecie1.jpg"
+          src="/zdjecia/zdjecie1.webp"
           alt="Chata Górska w zimie" 
           className="absolute inset-0 w-full h-full object-cover opacity-40 scale-105 transition-transform duration-1000 object-bottom"
         />
@@ -116,8 +169,9 @@ const handleSubmit = async (e) => {
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-neutral-950 to-transparent"></div>
       </header>
-
+    
       {/* 3. STREFA O NAS / O MIEJSCU */}
+
 <section id="o-nas" className="py-20 px-6 max-w-6xl mx-auto flex flex-col gap-16">
   
   {/* RZĄD 1: NAGŁÓWEK, PIERWSZY OPIS (LEWO) + 2 ZDJĘCIA (PRAWO) */}
@@ -133,8 +187,8 @@ const handleSubmit = async (e) => {
     
     {/* Prawa strona: Zdjęcia */}
     <div className="grid grid-cols-2 gap-4 items-end">
-      <img src="/zdjecia/zdjeciezakrzaka.jpg" alt="Zdjęcie sprzed domu" className="blur-[0.4px] contrast-110 rounded-2xl border border-neutral-900 shadow-xl w-full h-80 object-cover" />
-      <img src="/zdjecia/zdjeciedron.jpg" alt="Widok z drona" className="blur-[0.4px] contrast-110 rounded-2xl border border-neutral-900 shadow-xl w-full h-64 object-cover" />
+      <img src="/zdjecia/zdjeciezakrzaka.webp" alt="Zdjęcie sprzed domu" className="contrast-110 rounded-2xl border border-neutral-900 shadow-xl w-full h-80 object-cover" />
+      <img src="/zdjecia/zdjeciedron.webp" alt="Widok z drona" className="contrast-110 rounded-2xl border border-neutral-900 shadow-xl w-full h-64 object-cover" />
     </div>
   </div>
 
@@ -149,8 +203,8 @@ const handleSubmit = async (e) => {
     
     {/* Zdjęcia (W kodzie są niżej, ale klasa "md:order-first" wrzuci je na lewą stronę na komputerze) */}
     <div className="grid grid-cols-2 gap-4 items-start md:order-first">
-      <img src="/zdjecia/wannaokno.jpg" alt="Wanna przy oknie" className="contrast-110 rounded-2xl border border-neutral-900 shadow-xl w-full h-64 object-cover" />
-      <img src="/zdjecia/saunajacuzzi.jpg" alt="Sauna i Jacuzzi" className="contrast-110 rounded-2xl border border-neutral-900 shadow-xl w-full h-80 object-cover" />
+      <img src="/zdjecia/wannaokno.webp" alt="Wanna przy oknie" className="contrast-110 rounded-2xl border border-neutral-900 shadow-xl w-full h-64 object-cover" />
+      <img src="/zdjecia/saunajacuzzi.webp" alt="Sauna i Jacuzzi" className="contrast-110 rounded-2xl border border-neutral-900 shadow-xl w-full h-80 object-cover" />
     </div>
   </div>
 
@@ -165,8 +219,8 @@ const handleSubmit = async (e) => {
     
       {/* Prawa strona: Zdjęcia */}
       <div className="grid grid-cols-2 gap-4 items-end">
-        <img src="/zdjecia/taraskawa.jpg" alt="Kawa na tarasie" className="contrast-110 rounded-2xl border border-neutral-900 shadow-xl w-full h-80 object-cover" />
-        <img src="/zdjecia/zdjecieokno.jpg" alt="Zdjecie przez okno" className="contrast-110 rounded-2xl border border-neutral-900 shadow-xl w-full h-64 object-cover" />
+        <img src="/zdjecia/taraskawa.webp" alt="Kawa na tarasie" className="contrast-110 rounded-2xl border border-neutral-900 shadow-xl w-full h-80 object-cover" />
+        <img src="/zdjecia/zdjecieokno.webp" alt="Zdjecie przez okno" className="contrast-110 rounded-2xl border border-neutral-900 shadow-xl w-full h-64 object-cover" />
       </div>
     </div>
 
@@ -182,8 +236,25 @@ const handleSubmit = async (e) => {
       <h2 className="mt-2 text-3xl font-light text-white tracking-tight">Zobacz naszą przestrzeń</h2>
     </div>
 
-    {/* KONTENER KARUZELI */}
-    <div className="flex items-center justify-center gap-4 sm:gap-8 min-h-[350px] relative px-12">
+    {/* KONTENER KARUZELI Z OBSŁUGĄ GESTÓW DOTYKOWYCH */}
+    <div 
+      className="flex items-center justify-center gap-4 sm:gap-8 min-h-[350px] relative px-12 select-none"
+      onTouchStart={(e) => setTouchStartX(e.targetTouches[0].clientX)}
+      onTouchMove={(e) => setTouchEndX(e.targetTouches[0].clientX)}
+      onTouchEnd={() => {
+        if (!touchStartX || !touchEndX) return;
+        const distance = touchStartX - touchEndX;
+        const isLeftSwipe = distance > 50;  // Przesunięcie palcem w lewo (następne)
+        const isRightSwipe = distance < -50; // Przesunięcie palcem w prawo (poprzednie)
+
+        if (isLeftSwipe) nextSlide();
+        if (isRightSwipe) prevSlide();
+
+        // Resetowanie wartości po zakończeniu gestu
+        setTouchStartX(0);
+        setTouchEndX(0);
+      }}
+    >
       
       {/* STRZAŁKA W LEWO */}
       <button 
@@ -195,9 +266,8 @@ const handleSubmit = async (e) => {
         </svg>
       </button>
 
-      {/* TRZY FILARY KARUZELI (Wyświetlamy tylko 3 zdjęcia naraz dla super-wydajności) */}
+      {/* TRZY FILARY KARUZELI */}
       {[-1, 0, 1].map((offset) => {
-        // Magiczna matematyka, żeby karuzela zapętlała się w nieskończoność
         let index = currentIndex + offset;
         if (index < 0) index = JEDNA_Z_35_FOTEK.length - 1;
         if (index >= JEDNA_Z_35_FOTEK.length) index = 0;
@@ -213,11 +283,10 @@ const handleSubmit = async (e) => {
           >
             <img 
               src={JEDNA_Z_35_FOTEK[index]} 
-              // Wyciągamy numer zdjęcia (index + 1), żeby pasował do nazw 1, 2, 3 w JSON-ie. 
-              // Jeśli dla jakiegoś numeru zapomnisz dać opisu, rezygnujemy ze standardowego tekstu zapasowego.
               alt={opisySEO[index + 1] || `Ekskluzywna Chata Górska - zdjęcie nr ${index + 1}`} 
-              className={`w-full h-full object-cover rounded-2xl ...`}
+              className="w-full h-full object-cover rounded-2xl"
               loading="lazy" 
+              draggable="false" 
             />
           </div>
         );
@@ -309,19 +378,31 @@ const handleSubmit = async (e) => {
             <BookingCalendar onDatesChange={handleDatesChange} />
           </div>
         </div>
+        
       </section>
 
-      {/* FOOTER / KONTAKT */}
-      <footer id="kontakt" className="bg-neutral-950 border-t border-neutral-900 py-12 px-6 text-center text-sm text-neutral-500 font-light">
-        <div className="max-w-6xl mx-auto">
-          <p className="text-neutral-400 font-normal">Chata Górska Sp. z o.o.</p>
-          <p className="mt-1">Kontakt: kontakt@chatagorska.pl | +48 123 456 789</p>
-          <p className="mt-6 text-xs text-neutral-600">&copy; 2026 Chata Górska. Wszystkie prawa zastrzeżone.</p>
-        </div>
-      </footer>
+{/* FOOTER / KONTAKT */}
+    <footer className="py-8 text-center text-neutral-500 text-xs border-t border-neutral-900 bg-neutral-950">
+    
+      <p>&copy; 2026 Chata Górska. Wszelkie prawa zastrzeżone.</p>
+      
+      <div className="mt-3 space-x-4">
+        <a href="/Regulamin_Obiektu.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-amber-500 transition-colors">
+          Regulamin obiektu
+        </a>
+        <span className="text-neutral-700">|</span>
+        <a href="/Polityka_Prywatnosci.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-amber-500 transition-colors">
+          Polityka prywatności
+        </a>
+      </div>
 
+      <div className="mt-4 space-y-1 text-neutral-400">
+        <p>Kontakt: kontakt@chatagorska.pl | +48 512 294 264</p>
+        <p>Adres: 43-353 Porąbka, ul. Poprzeczna 6</p>
+      </div>
+    </footer>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
