@@ -92,10 +92,11 @@ const handleSubmit = async (e) => {
       {/* LOGO */}
       <span className="text-xl font-light tracking-widest text-white uppercase">Chata Górska</span>
       
-      {/* SZYBKI KONTAKT DLA TELEFONÓW (ukryty na komputerach md:hidden) */}
-      <div className="flex md:hidden items-center space-x-6 text-[11px] font-light tracking-wider text-neutral-400">
+{/* SZYBKI KONTAKT DLA TELEFONÓW (ukryty na komputerach md:hidden) */}
+      <div className="flex md:hidden items-center justify-between w-full text-[10px] sm:text-[11px] font-light tracking-wider text-neutral-400">
+        
         {/* TELEFON MOBILNY */}
-        <a href="tel:+48512294264" className="flex items-center gap-1.5 hover:text-amber-500 active:text-amber-400 transition-colors">
+        <a href="tel:+48512294264" className="flex items-center gap-1 hover:text-amber-500 active:text-amber-400 transition-colors">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3.5 h-3.5 text-amber-500/70">
             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
           </svg>
@@ -103,13 +104,23 @@ const handleSubmit = async (e) => {
         </a>
 
         {/* EMAIL MOBILNY */}
-        <a href="mailto:kontakt@chatagorska.pl" className="flex items-center gap-1.5 hover:text-amber-500 active:text-amber-400 transition-colors">
+        <a href="mailto:kontakt@chatagorska.pl" className="flex items-center gap-1 hover:text-amber-500 active:text-amber-400 transition-colors">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3.5 h-3.5 text-amber-500/70">
             <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
           </svg>
           <span>kontakt@chatagorska.pl</span>
         </a>
+
+        {/* JAK DOJECHAĆ */}
+        <a href="#jak-dojechac" className="flex items-center gap-1 hover:text-amber-500 active:text-amber-400 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3.5 h-3.5 text-amber-500/70">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+          </svg>
+          <span>Jak dojechać</span>
+        </a>
       </div>
+
     </div>
     
     {/* ŚRODEK: LINKI NAWIGACJI (tylko komputery) */}
@@ -117,7 +128,7 @@ const handleSubmit = async (e) => {
       <a href="#o-nas" className="hover:text-amber-500 transition-colors">O nas</a>
       <a href="#galeria" className="hover:text-amber-500 transition-colors">Galeria</a>
       <a href="#rezerwacja" className="hover:text-amber-500 transition-colors">Rezerwacja</a>
-      <a href="#kontakt" className="hover:text-amber-500 transition-colors">Kontakt</a>
+      <a href="#jak-dojechac" className="hover:text-amber-500 transition-colors">Jak Dojechać?</a>
     </div>
 
     {/* PRAWA STRONA: DANE DLA KOMPUTERÓW + PRZYCISK REZERWACJI */}
@@ -181,7 +192,7 @@ const handleSubmit = async (e) => {
       <span className="text-xs font-semibold tracking-widest text-amber-500 uppercase">Strefa Komfortu</span>
       <h2 className="mt-2 text-3xl font-light text-white tracking-tight">Oaza ciszy i luksusu</h2>
       <p className="mt-6 text-neutral-400 font-light leading-relaxed">
-        Nasz obiekt położony jest w otoczeniu lasu, ciszy i górskiej natury, tworząc idealne warunki dla osób szukających komfortu z dala od zgiełku miasta. Dom pomieści od 8 do 12 osób w 4 dwuosobowych sypialniach (dodatkowe miejsca noclegowe znajdują się w salonie). To doskonałe miejsce na rodzinne wyjazdy, weekendy z przyjaciółmi czy kameralne spotkania.
+        Nasz obiekt położony jest w otoczeniu lasu, ciszy i górskiej natury, tworząc idealne warunki dla osób szukających komfortu z dala od zgiełku miasta.<br/><br/>Dom pomieści od 8 do 12 osób w 4 dwuosobowych sypialniach (dodatkowe miejsca noclegowe znajdują się w salonie). To doskonałe miejsce na rodzinne wyjazdy, weekendy z przyjaciółmi czy kameralne spotkania.
       </p>
     </div>
     
@@ -197,7 +208,7 @@ const handleSubmit = async (e) => {
     {/* Opis (W kodzie jest wyżej, ale klasa "md:order-last" przesunie go na prawo na komputerze) */}
     <div className="md:order-last">
       <p className="text-neutral-400 font-light leading-relaxed">
-        Do dyspozycji gości oddajemy przestronne wnętrza, w pełni wyposażoną kuchnię oraz bogatą strefę rozrywki (bilard, ping-pong, piłkarzyki, głośnik). Po dniu spędzonym na szlaku możesz zrelaksować się w jacuzzi z widokiem na naturę, skorzystać z sauny lub spędzić wieczór w altanie przy grillu lub ognisku.
+        Do dyspozycji gości oddajemy przestronne wnętrza, w pełni wyposażoną kuchnię oraz bogatą strefę rozrywki (bilard, ping-pong, piłkarzyki).<br/> Po dniu spędzonym na szlaku możesz zrelaksować się w jacuzzi z widokiem na naturę, skorzystać z sauny lub spędzić wieczór w altanie przy grillu lub ognisku.
       </p>
     </div>
     
@@ -213,7 +224,7 @@ const handleSubmit = async (e) => {
       {/* Lewa strona: Tekst */}
       <div>
         <p className="mt-6 text-neutral-400 font-light leading-relaxed">
-          Okolica zachwyca spokojem i pięknymi widokami, które można podziwiać, pijąc kawę na przestronnym tarasie przy wschodzie słońca. To idealne miejsce na odpoczynek o każdej porze roku – zarówno dla miłośników aktywnego wypoczynku, jak i błogiego relaksu w górskim klimacie. Położenie domu stanowi doskonałą bazę wypadową na liczne trasy piesze i rowerowe oraz wycieczki do okolicznych atrakcji, takich jak Góra Żar, Kocierz, Czarny Groń, Park Miniatur czy Energylandia. Zapraszamy do miejsca, w którym natura i cisza spotykają się z prawdziwym komfortem.
+          Okolica zachwyca spokojem i pięknymi widokami, które można podziwiać, pijąc kawę na przestronnym tarasie przy wschodzie słońca. To idealne miejsce na odpoczynek o każdej porze roku – zarówno dla miłośników aktywnego wypoczynku, jak i błogiego relaksu w górskim klimacie.<br/><br/>Położenie domu stanowi doskonałą bazę wypadową na liczne trasy piesze i rowerowe oraz wycieczki do okolicznych atrakcji, takich jak Góra Żar, Kocierz, Czarny Groń, Park Miniatur czy Energylandia. Zapraszamy do miejsca, w którym natura i cisza spotykają się z prawdziwym komfortem.
         </p>
       </div>
     
@@ -223,6 +234,46 @@ const handleSubmit = async (e) => {
         <img src="/zdjecia/zdjecieokno.webp" alt="Zdjecie przez okno" className="contrast-110 rounded-2xl border border-neutral-900 shadow-xl w-full h-64 object-cover" />
       </div>
     </div>
+
+        {/* RZĄD 4: sekcja jak dojechać) */}
+            {/* Lewa strona: Tekst */}
+<section id="jak-dojechac" className="w-full max-w-6xl mx-auto py-12 md:py-20 px-6">
+  {/* Główny kontener - items-center gwarantuje pionowe wyśrodkowanie na komputerze! */}
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+    
+    {/* Lewa strona: Tekst */}
+    <div className="flex flex-col justify-center">
+      <h2 className="text-xl font-semibold tracking-widest text-amber-500 uppercase">
+        Jak dojechać?
+      </h2>
+      <p className="mt-6 text-neutral-400 font-light leading-relaxed">
+        Twoja wizyta u nas zaczyna się już w drodze. Aby ułatwić Ci dojazd i oszczędzić stresu z nawigacją, przygotowaliśmy ten krótki film. Sprawdź, jak wygląda ostatni etap trasy, zrelaksuj się i jedź bezpiecznie. Czekamy na Ciebie!
+      </p>
+      
+      {/* Przycisk do nawigacji */}
+      <a 
+        href="https://maps.app.goo.gl/NDC2pAE1wGR35bSf7" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="mt-8 px-8 py-3 bg-amber-500 hover:bg-amber-400 text-neutral-900 font-semibold rounded-xl transition-all shadow-lg hover:shadow-amber-500/20 text-center w-full md:w-max"
+      >
+        📍 Otwórz w Google Maps
+      </a>
+    </div>
+
+    {/* Prawa strona: Wideo */}
+    <div className="flex justify-center md:justify-end items-center">
+      <video 
+        src="dojazd.mp4" 
+        controls 
+        className="contrast-110 rounded-3xl border border-neutral-800 shadow-2xl w-full max-w-sm aspect-[9/16] object-cover bg-neutral-900"
+      >
+        Twoja przeglądarka nie obsługuje odtwarzacza wideo.
+      </video>
+    </div>
+
+  </div>
+</section>
 
 </section>
 
